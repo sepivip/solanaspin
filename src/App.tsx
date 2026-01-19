@@ -20,9 +20,9 @@ export default function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Solana Spin 🎰</h1>
+        <h1>Solana Spin dYZø</h1>
         <p className="subtitle">
-          Random Address Explorer • Read-Only Blockchain Experiment
+          Random Address Explorer ƒ?› Read-Only Blockchain Experiment
         </p>
       </header>
 
@@ -34,7 +34,7 @@ export default function App() {
 
       <footer className="app-footer">
         <p>
-          Built for education & entertainment • No funds can be accessed
+          Built for education & entertainment ƒ?› No funds can be accessed
         </p>
         <p>
           Powered by{' '}
@@ -47,6 +47,14 @@ export default function App() {
           </a>{' '}
           public RPC
         </p>
+        <div className="footer-counter">
+          <span>Visits</span>
+          <img
+            src="https://solanaspin.goatcounter.com/counter.svg"
+            alt="Visit counter"
+            loading="lazy"
+          />
+        </div>
       </footer>
     </div>
   );
