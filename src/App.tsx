@@ -49,11 +49,7 @@ export default function App() {
         </p>
         <div className="footer-counter">
           <span>Visits</span>
-          <img
-            src="https://solanaspin.goatcounter.com/count?p=/"
-            alt="Visit counter"
-            loading="lazy"
-          />
+          <span id="goatcounter-count" aria-label="Visit counter"></span>
         </div>
       </footer>
     </div>

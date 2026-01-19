@@ -530,7 +530,8 @@ body::before {
   letter-spacing: 0.1em;
 }
 
-.footer-counter img {
+.footer-counter img,
+.footer-counter svg {
   height: 22px;
   filter: drop-shadow(0 0 6px rgba(51, 242, 255, 0.4));
 }

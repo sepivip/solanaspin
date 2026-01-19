@@ -13,9 +13,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script data-goatcounter="https://solanaspin.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function () {
+        var tries = 0;
+        var timer = setInterval(function () {
+          tries += 1;
+          if (window.goatcounter && typeof window.goatcounter.visit_count === 'function') {
+            window.goatcounter.visit_count({
+              append: '#goatcounter-count',
+              type: 'svg',
+              no_branding: true,
+            });
+            clearInterval(timer);
+          } else if (tries > 50) {
+            clearInterval(timer);
+          }
+        }, 100);
+      })();
+    </script>
   </body>
 </html>
