@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/SolanaSpin/',
+  base: '/solanaspin/',
   plugins: [react()],
   define: {
     'process.env': {},
