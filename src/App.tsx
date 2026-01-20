@@ -21,9 +21,7 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <h1>Solana Spin dYZø</h1>
-        <p className="subtitle">
-          Random Address Explorer ƒ?› Read-Only Blockchain Experiment
-        </p>
+        <p className="subtitle">Blockchain Experiment</p>
       </header>
 
       <main>
@@ -34,10 +32,7 @@ export default function App() {
 
       <footer className="app-footer">
         <p>
-          Built for education & entertainment ƒ?› No funds can be accessed
-        </p>
-        <p>
-          Powered by{' '}
+          Built for education & entertainment. Powered by{' '}
           <a
             href="https://solana.com"
             target="_blank"
@@ -47,10 +42,7 @@ export default function App() {
           </a>{' '}
           public RPC
         </p>
-        <div className="footer-counter">
-          <span>Visits</span>
-          <span id="goatcounter-count" aria-label="Visit counter"></span>
-        </div>
+<span id="goatcounter-count" className="footer-counter" aria-label="Visit counter"></span>
       </footer>
     </div>
   );

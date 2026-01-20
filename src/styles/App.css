@@ -517,17 +517,10 @@ body::before {
 }
 
 .footer-counter {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
+  display: inline-block;
   margin-top: 0.6rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid rgba(51, 242, 255, 0.35);
-  background: rgba(8, 12, 20, 0.6);
-  box-shadow: 0 0 12px rgba(51, 242, 255, 0.2);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-size: 0.8rem;
 }
 
 .footer-counter img,
