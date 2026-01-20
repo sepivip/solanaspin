@@ -27,11 +27,28 @@ interface SlotMachineProps {
   onStatsUpdate?: (stats: GameStats) => void;
 }
 
+function loadStoredStats(): GameStats {
+  try {
+    const raw = localStorage.getItem(STATS_STORAGE_KEY);
+    if (!raw) return { totalSpins: 0, addressesWithBalance: 0 };
+    const parsed = JSON.parse(raw) as Partial<GameStats>;
+    if (typeof parsed.totalSpins === 'number' && typeof parsed.addressesWithBalance === 'number') {
+      return {
+        totalSpins: parsed.totalSpins,
+        addressesWithBalance: parsed.addressesWithBalance,
+      };
+    }
+  } catch {
+    // Ignore storage errors.
+  }
+  return { totalSpins: 0, addressesWithBalance: 0 };
+}
+
 export function SlotMachine({ onStatsUpdate }: SlotMachineProps) {
   const [spinState, setSpinState] = useState<SpinState>('idle');
   const [displayAddress, setDisplayAddress] = useState<string>('');
   const [result, setResult] = useState<SpinResult | null>(null);
-  const [stats, setStats] = useState<GameStats>({ totalSpins: 0, addressesWithBalance: 0 });
+  const [stats, setStats] = useState<GameStats>(() => loadStoredStats());
   const [currentMnemonic, setCurrentMnemonic] = useState<string[]>([]);
 
   const { canSpin, cooldownRemaining, spinsRemaining, maxSpinsPerMinute, trySpin } = useRateLimit();
@@ -173,6 +190,14 @@ export function SlotMachine({ onStatsUpdate }: SlotMachineProps) {
     setCurrentMnemonic([]);
   }, []);
 
+  useEffect(() => {
+    try {
+      localStorage.setItem(STATS_STORAGE_KEY, JSON.stringify(stats));
+    } catch {
+      // Ignore storage errors.
+    }
+  }, [stats]);
+
   // Cleanup on unmount
   useEffect(() => {
     return () => {
@@ -304,26 +329,3 @@ export function SlotMachine({ onStatsUpdate }: SlotMachineProps) {
     </div>
   );
 }
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STATS_STORAGE_KEY);
-      if (!raw) return;
-      const parsed = JSON.parse(raw) as Partial<GameStats>;
-      if (typeof parsed.totalSpins === 'number' && typeof parsed.addressesWithBalance === 'number') {
-        setStats({
-          totalSpins: parsed.totalSpins,
-          addressesWithBalance: parsed.addressesWithBalance,
-        });
-      }
-    } catch {
-      // Ignore storage errors.
-    }
-  }, []);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(STATS_STORAGE_KEY, JSON.stringify(stats));
-    } catch {
-      // Ignore storage errors.
-    }
-  }, [stats]);
